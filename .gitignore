@@ -1,0 +1,10 @@
+.idea
+.gradle
+
+target
+build
+out
+
+*.iml
+
+mysql.ini
