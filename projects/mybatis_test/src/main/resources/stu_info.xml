@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.entity.StudentInfo">
+    <select id="get_student_by_id" parameterType="int" resultType="org.example.entity.StudentInfo">
+        select * from `stu_info` where id = #{id}
+    </select>
+    <insert id="add_student" parameterType="org.example.entity.StudentInfo" useGeneratedKeys="true">
+        insert into stu_info values (null, #{name}, #{age}, #{birthday}, #{email}, #{country})
+    </insert>
+</mapper>
