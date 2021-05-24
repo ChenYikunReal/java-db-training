@@ -3,9 +3,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.example.entity.StudentInfo">
     <select id="get_student_by_id" parameterType="int" resultType="org.example.entity.StudentInfo">
-        select * from `stu_info` where id = #{id}
+        select * from `stu_info` where id = #{id};
     </select>
     <insert id="add_student" parameterType="org.example.entity.StudentInfo" useGeneratedKeys="true">
-        insert into stu_info values (null, #{name}, #{age}, #{birthday}, #{email}, #{country})
+        insert into `stu_info` values (null, #{name}, #{age}, #{birthday}, #{email}, #{country});
     </insert>
+    <select id="get_student_count" resultType="int">
+        select count(*) from `stu_info`;
+    </select>
 </mapper>
