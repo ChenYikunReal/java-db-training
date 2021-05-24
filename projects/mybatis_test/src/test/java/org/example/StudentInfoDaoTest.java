@@ -19,7 +19,7 @@ import java.util.Map;
 public class StudentInfoDaoTest {
 
     @Test
-    public void insertTest() {
+    public void curdTest() {
         // 读取配置文件
         try (InputStream in = Resources.getResourceAsStream("mybatis-config.xml")) {
             // 初始化mybatis，创建SqlSessionFactory类实例

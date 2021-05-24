@@ -1,5 +1,7 @@
 # MyBatis学习笔记
 
+![](../../images/mybatis.png)
+
 1. 报错 `### Error querying database. Cause: java.lang.IllegalArgumentException: Mapped Statements collection...`
 <br>在配置mybatis-config.xml文件时，没有对应的配置，这个配置可能是没有添加mapper.xml配置文件的路径，也可能是没有这个方法。
 2. 报Warning如下：
