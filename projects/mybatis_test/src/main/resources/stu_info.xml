@@ -2,13 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.example.entity.StudentInfo">
-    <select id="get_student_by_id" parameterType="int" resultType="org.example.entity.StudentInfo">
-        select * from `stu_info` where id = #{id};
-    </select>
+    <!--增-->
     <insert id="add_student" parameterType="org.example.entity.StudentInfo" useGeneratedKeys="true">
         insert into `stu_info` values (null, #{name}, #{age}, #{birthday}, #{email}, #{country});
     </insert>
-    <select id="get_student_count" resultType="int">
+    <!--删-->
+    <delete id="delete_student_by_name" parameterType="String">
+        delete from `stu_info` where name=#{name};
+    </delete>
+    <!--改-->
+    <update id="update_student_name" parameterType="java.util.Map" useGeneratedKeys="true">
+        update `stu_info` set name=#{new_name} where name=#{select_name};
+    </update>
+    <!--查-->
+    <select id="get_student_by_id" parameterType="int" resultType="org.example.entity.StudentInfo">
+        select * from `stu_info` where id = #{id};
+    </select>
+    <select id="count_student" resultType="int">
         select count(*) from `stu_info`;
+    </select>
+    <select id="count_student_name" parameterType="String" resultType="int">
+        select count(*) from `stu_info` where name=#{name};
     </select>
 </mapper>
