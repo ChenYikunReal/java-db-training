@@ -2,7 +2,16 @@
 
 MyBatis是一款持久化框架。
 
+![](../../images/mybatis.png)
+
 这里参考[博客](https://blog.csdn.net/feiyangtianyao/article/details/93476407) 引入了`mybatis-proxy`框架，这是作者自己写的开源项目，用起来虽然没那么舒适，但也还OK。
+
+Pojo、Mapper、mapper.xml均由`mybatis-generator-maven-plugin`插件自动生成，基于Example和Criteria的编码更为简单。
+
+考虑到之前使用新版本MySQL8遇到的一些故障，更换MySQL版本为`5.7.26`。
+
+IDEA已安装`mybatisx`插件。<br>
+![](src/main/resources/mybatisx.png)
 
 ## Oracle自带的练习表
 表结构说明：

@@ -20,6 +20,11 @@ public class DeptManagementImpl implements DeptManagement {
     }
 
     @Override
+    public Dept selectById(int id) {
+        return deptMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
     public List<Dept> selectByName(String name) {
         DeptExample deptExample = new DeptExample();
         DeptExample.Criteria deptCriteria = deptExample.createCriteria();
@@ -40,6 +45,11 @@ public class DeptManagementImpl implements DeptManagement {
         Dept dept = new Dept();
         dept.setDname(newName);
         deptMapper.updateByExampleSelective(dept, deptExample);
+    }
+
+    @Override
+    public void deleteById(int id) {
+        deptMapper.deleteByPrimaryKey(id);
     }
 
     @Override

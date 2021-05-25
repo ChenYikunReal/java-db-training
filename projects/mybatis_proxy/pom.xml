@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>mybatis_train</artifactId>
+    <artifactId>mybatis_proxy</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>mybatis_train</name>
+    <name>mybatis_proxy</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

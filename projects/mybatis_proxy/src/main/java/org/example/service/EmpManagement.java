@@ -1,10 +1,10 @@
 package org.example.service;
 
-import org.example.pojo.Dept;
+import org.example.pojo.Emp;
 
 import java.util.List;
 
-public interface DeptManagement {
+public interface EmpManagement {
 
     /**
      * 查询元组个数
@@ -13,17 +13,24 @@ public interface DeptManagement {
     long countAll();
 
     /**
+     * 依据ID查询元组
+     * @param id
+     * @return
+     */
+    Emp selectById(int id);
+
+    /**
      * 依据name查询元组
      * @param name
      * @return
      */
-    List<Dept> selectByName(String name);
+    List<Emp> selectByName(String name);
 
     /**
      * 插入一个元组
-     * @param dept
+     * @param emp
      */
-    void insertOne(Dept dept);
+    void insertOne(Emp emp);
 
     /**
      * 更新一个元组的name
@@ -31,6 +38,12 @@ public interface DeptManagement {
      * @param newName
      */
     void updateByName(String selectName, String newName);
+
+    /**
+     * 依据ID删除元组
+     * @param id
+     */
+    void deleteById(int id);
 
     /**
      * 依据name删除元组
@@ -43,12 +56,12 @@ public interface DeptManagement {
      * @param pattern
      * @return
      */
-    List<Dept> selectFuzzyByName(String pattern);
+    List<Emp> selectFuzzyByName(String pattern);
 
     /**
      * 获取name有序的全部元组
      * @return
      */
-    List<Dept> selectAllOrderByName();
-
+    List<Emp> selectAllOrderByName();
+    
 }
