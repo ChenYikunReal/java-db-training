@@ -85,4 +85,35 @@ public class DeptManagementTest {
         }
     }
 
+    @Test
+    public void testSelectFuzzyByName() {
+        try (InputStream in = Resources.getResourceAsStream("application.properties")) {
+            Properties properties = new Properties();
+            properties.load(in);
+            MybatisConfiguration.initConfiguration(properties);
+            DeptManagement deptManagement = new DeptManagementImpl();
+            List<Dept> deptList = deptManagement.selectFuzzyByName("TI");
+            Assert.assertEquals(2, deptList.size());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testSelectOrderByName() {
+        try (InputStream in = Resources.getResourceAsStream("application.properties")) {
+            Properties properties = new Properties();
+            properties.load(in);
+            MybatisConfiguration.initConfiguration(properties);
+            DeptManagement deptManagement = new DeptManagementImpl();
+            List<Dept> deptList = deptManagement.selectAllOrderByName();
+            Assert.assertNotEquals(0, deptList.size());
+            for (Dept dept : deptList) {
+                System.out.println(dept);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

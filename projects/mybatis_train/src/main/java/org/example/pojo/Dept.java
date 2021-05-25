@@ -1,5 +1,8 @@
 package org.example.pojo;
 
+import lombok.ToString;
+
+@ToString
 public class Dept {
     /**
      *

@@ -50,4 +50,20 @@ public class DeptManagementImpl implements DeptManagement {
         deptMapper.deleteByExample(deptExample);
     }
 
+    @Override
+    public List<Dept> selectFuzzyByName(String pattern) {
+        DeptExample deptExample = new DeptExample();
+        DeptExample.Criteria deptCriteria = deptExample.createCriteria();
+        deptCriteria.andDnameLike("%" + pattern + "%");
+        return deptMapper.selectByExample(deptExample);
+    }
+
+    @Override
+    public List<Dept> selectAllOrderByName() {
+        DeptExample deptExample = new DeptExample();
+        DeptExample.Criteria deptCriteria = deptExample.createCriteria();
+        deptExample.setOrderByClause("dname ASC");
+        return deptMapper.selectByExample(deptExample);
+    }
+
 }
