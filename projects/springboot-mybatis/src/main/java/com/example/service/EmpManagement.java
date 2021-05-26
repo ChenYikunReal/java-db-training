@@ -44,5 +44,36 @@ public interface EmpManagement {
      * @param name
      */
     void deleteByName(String name);
+
+    /**
+     * 有选择地查询
+     * @param emp
+     * @return
+     */
+    List<Emp> selectSelective(Emp emp);
+
+    /**
+     * 有选择地插入
+     * @param emp
+     */
+    void insertSelective(Emp emp);
+
+    /**
+     * 有选择地删除
+     * @param emp
+     */
+    void updateSelective(Emp emp);
+
+    /**
+     * 批量插入
+     * @param empList
+     */
+    void insertBatch(List<Emp> empList);
+
+    /**
+     * 批量删除
+     * @param empList
+     */
+    void deleteBatch(List<Integer> empList);
     
 }

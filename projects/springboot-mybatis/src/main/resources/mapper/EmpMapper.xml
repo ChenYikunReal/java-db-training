@@ -6,6 +6,52 @@
 
     <parameterMap id="emp" type="com.example.pojo.Emp"/>
 
+    <sql id="insertSelectiveValues">
+        #{empno},
+        <if test="ename != null">
+            #{ename},
+        </if>
+        <if test="job != null">
+            #{job},
+        </if>
+        <if test="mgr != null">
+            #{mgr},
+        </if>
+        <if test="hiredate != null">
+            #{hiredate},
+        </if>
+        <if test="sal != null">
+            #{sal},
+        </if>
+        <if test="comm != null">
+            #{comm},
+        </if>
+        #{deptno}
+    </sql>
+
+    <sql id="insertSelectiveKeys">
+        empno,
+        <if test="ename != null">
+            ename,
+        </if>
+        <if test="job != null">
+            job,
+        </if>
+        <if test="mgr != null">
+            mgr,
+        </if>
+        <if test="hiredate != null">
+            hiredate,
+        </if>
+        <if test="sal != null">
+            sal,
+        </if>
+        <if test="comm != null">
+            comm,
+        </if>
+        deptno
+    </sql>
+
     <select id="selectById" parameterType="Integer" resultMap="emp">
         SELECT * FROM emp
         WHERE empno=#{id}
@@ -16,8 +62,44 @@
         WHERE ename=#{name}
     </select>
 
+    <select id="selectSelective" parameterType="emp" resultType="emp">
+        SELECT * FROM emp WHERE
+        empno = #{empno}
+        <if test="ename != null">
+            AND ename = #{ename}
+        </if>
+        <if test="job != null">
+            AND job = #{job}
+        </if>
+        <if test="mgr != null">
+            AND mgr = #{mgr}
+        </if>
+        <if test="hiredate != null">
+            AND hiredate = #{hiredate}
+        </if>
+        <if test="sal != null">
+            AND sal = #{sal}
+        </if>
+        <if test="comm != null">
+            AND comm = #{comm}
+        </if>
+        AND deptno = #{deptno}
+    </select>
+
     <insert id="insertOne" parameterType="emp">
         INSERT INTO emp VALUES (#{empno},#{ename},#{job},#{mgr},#{hiredate},#{sal},#{comm},#{deptno})
+    </insert>
+
+    <insert id="insertSelective" parameterType="emp">
+        INSERT INTO emp (<include refid="insertSelectiveKeys"></include>)
+        VALUES (<include refid="insertSelectiveValues"></include>)
+    </insert>
+
+    <insert id="insertBatch" parameterType="list">
+        INSERT INTO emp VALUES
+        <foreach collection="list" item="emp" separator=",">
+            (#{emp.empno},#{emp.ename},#{emp.job},#{emp.mgr},#{emp.hiredate},#{emp.sal},#{emp.comm},#{emp.deptno})
+        </foreach>
     </insert>
 
     <update id="updateByName" parameterType="java.util.Map">
@@ -30,6 +112,38 @@
 
     <delete id="deleteByName" parameterType="String">
         DELETE FROM emp WHERE ename=#{name}
+    </delete>
+
+    <delete id="updateSelective" parameterType="emp">
+        UPDATE emp
+        <set>
+            <if test="ename != null">
+                ename = #{ename},
+            </if>
+            <if test="job != null">
+                job = #{job},
+            </if>
+            <if test="mgr != null">
+                mgr = #{mgr},
+            </if>
+            <if test="hiredate != null">
+                hiredate = #{hiredate},
+            </if>
+            <if test="sal != null">
+                sal = #{sal},
+            </if>
+            <if test="comm != null">
+                comm = #{comm},
+            </if>
+        </set>
+        WHERE empno = #{empno}
+    </delete>
+
+    <delete id="deleteBatch" parameterType="list">
+        DELETE FROM emp WHERE empno IN
+        <foreach collection="list" item="empno" open="(" close=")" separator=",">
+            #{empno}
+        </foreach>
     </delete>
 
 </mapper>

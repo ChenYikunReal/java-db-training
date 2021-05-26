@@ -49,4 +49,29 @@ public class EmpManagementImpl implements EmpManagement {
         empMapper.deleteByName(name);
     }
 
+    @Override
+    public List<Emp> selectSelective(Emp emp) {
+        return empMapper.selectSelective(emp);
+    }
+
+    @Override
+    public void insertSelective(Emp emp) {
+        empMapper.insertSelective(emp);
+    }
+
+    @Override
+    public void updateSelective(Emp emp) {
+        empMapper.updateSelective(emp);
+    }
+
+    @Override
+    public void insertBatch(List<Emp> empList) {
+        empMapper.insertBatch(empList);
+    }
+
+    @Override
+    public void deleteBatch(List<Integer> empList) {
+        empMapper.deleteBatch(empList);
+    }
+
 }

@@ -21,4 +21,14 @@ public interface EmpMapper {
 
     void deleteByName(String name);
 
+    List<Emp> selectSelective(Emp emp);
+
+    void insertSelective(Emp emp);
+
+    void updateSelective(Emp emp);
+
+    void insertBatch(List<Emp> empList);
+
+    void deleteBatch(List<Integer> empList);
+
 }
