@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.EmpMapper">
+
+    <resultMap id="emp" type="com.example.pojo.Emp"/>
+
+    <parameterMap id="emp" type="com.example.pojo.Emp"/>
+
+    <select id="selectById" parameterType="Integer" resultMap="emp">
+        SELECT * FROM emp
+        WHERE empno=#{id}
+    </select>
+
+    <select id="selectByName" parameterType="String" resultType="emp">
+        SELECT * FROM emp
+        WHERE ename=#{name}
+    </select>
+
+    <insert id="insertOne" parameterType="emp">
+        INSERT INTO emp VALUES (#{empno},#{ename},#{job},#{mgr},#{hiredate},#{sal},#{comm},#{deptno})
+    </insert>
+
+    <update id="updateByName" parameterType="java.util.Map">
+        UPDATE emp SET ename=#{selectName} WHERE ename=#{newName}
+    </update>
+
+    <delete id="deleteById" parameterType="Integer">
+        DELETE FROM emp WHERE empno=#{id}
+    </delete>
+
+    <delete id="deleteByName" parameterType="String">
+        DELETE FROM emp WHERE ename=#{name}
+    </delete>
+
+</mapper>
