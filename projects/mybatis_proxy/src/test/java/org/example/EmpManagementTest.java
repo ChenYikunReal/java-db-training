@@ -22,8 +22,8 @@ public class EmpManagementTest {
             Properties properties = new Properties();
             properties.load(in);
             MybatisConfiguration.initConfiguration(properties);
-            EmpManagement EmpManagement = new EmpManagementImpl();
-            Assert.assertNotEquals(0, EmpManagement.countAll());
+            EmpManagement empManagement = new EmpManagementImpl();
+            Assert.assertNotEquals(0, empManagement.countAll());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -35,9 +35,9 @@ public class EmpManagementTest {
             Properties properties = new Properties();
             properties.load(in);
             MybatisConfiguration.initConfiguration(properties);
-            EmpManagement EmpManagement = new EmpManagementImpl();
-            Emp Emp = EmpManagement.selectById(7521);
-            Assert.assertNotNull(Emp);
+            EmpManagement empManagement = new EmpManagementImpl();
+            Emp emp = empManagement.selectById(7521);
+            Assert.assertNotNull(emp);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -49,10 +49,10 @@ public class EmpManagementTest {
             Properties properties = new Properties();
             properties.load(in);
             MybatisConfiguration.initConfiguration(properties);
-            EmpManagement EmpManagement = new EmpManagementImpl();
-            List<Emp> EmpList = EmpManagement.selectByName("BLAKE");
-            Assert.assertNotEquals(0, EmpList.size());
-            Assert.assertEquals(1, EmpList.size());
+            EmpManagement empManagement = new EmpManagementImpl();
+            List<Emp> empList = empManagement.selectByName("BLAKE");
+            Assert.assertNotEquals(0, empList.size());
+            Assert.assertEquals(1, empList.size());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -64,11 +64,11 @@ public class EmpManagementTest {
             Properties properties = new Properties();
             properties.load(in);
             MybatisConfiguration.initConfiguration(properties);
-            EmpManagement EmpManagement = new EmpManagementImpl();
+            EmpManagement empManagement = new EmpManagementImpl();
             Date date = new Date();
             date.setTime(System.currentTimeMillis());
-            Emp Emp = new Emp(8000, "BILIBILI", "CLERK", 7782, date, 1300.00f, null, 10);
-            EmpManagement.insertOne(Emp);
+            Emp emp = new Emp(8000, "BILIBILI", "CLERK", 7782, date, 1300.00f, null, 10);
+            empManagement.insertOne(emp);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -80,8 +80,8 @@ public class EmpManagementTest {
             Properties properties = new Properties();
             properties.load(in);
             MybatisConfiguration.initConfiguration(properties);
-            EmpManagement EmpManagement = new EmpManagementImpl();
-            EmpManagement.updateByName("BILIBILI", "WAIBIBABO");
+            EmpManagement empManagement = new EmpManagementImpl();
+            empManagement.updateByName("BILIBILI", "WAIBIBABO");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -93,8 +93,8 @@ public class EmpManagementTest {
             Properties properties = new Properties();
             properties.load(in);
             MybatisConfiguration.initConfiguration(properties);
-            EmpManagement EmpManagement = new EmpManagementImpl();
-            EmpManagement.deleteById(8000);
+            EmpManagement empManagement = new EmpManagementImpl();
+            empManagement.deleteById(8000);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -106,8 +106,8 @@ public class EmpManagementTest {
             Properties properties = new Properties();
             properties.load(in);
             MybatisConfiguration.initConfiguration(properties);
-            EmpManagement EmpManagement = new EmpManagementImpl();
-            EmpManagement.deleteByName("WAIBIBABO");
+            EmpManagement empManagement = new EmpManagementImpl();
+            empManagement.deleteByName("WAIBIBABO");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -119,9 +119,9 @@ public class EmpManagementTest {
             Properties properties = new Properties();
             properties.load(in);
             MybatisConfiguration.initConfiguration(properties);
-            EmpManagement EmpManagement = new EmpManagementImpl();
-            List<Emp> EmpList = EmpManagement.selectFuzzyByName("LA");
-            Assert.assertEquals(2, EmpList.size());
+            EmpManagement empManagement = new EmpManagementImpl();
+            List<Emp> empList = empManagement.selectFuzzyByName("LA");
+            Assert.assertEquals(2, empList.size());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -133,11 +133,11 @@ public class EmpManagementTest {
             Properties properties = new Properties();
             properties.load(in);
             MybatisConfiguration.initConfiguration(properties);
-            EmpManagement EmpManagement = new EmpManagementImpl();
-            List<Emp> EmpList = EmpManagement.selectAllOrderByName();
-            Assert.assertNotEquals(0, EmpList.size());
-            for (Emp Emp : EmpList) {
-                System.out.println(Emp);
+            EmpManagement empManagement = new EmpManagementImpl();
+            List<Emp> empList = empManagement.selectAllOrderByName();
+            Assert.assertNotEquals(0, empList.size());
+            for (Emp emp : empList) {
+                System.out.println(emp);
             }
         } catch (IOException e) {
             e.printStackTrace();

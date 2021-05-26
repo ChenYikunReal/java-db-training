@@ -44,7 +44,7 @@ public class EmpManagementController {
         return "success!";
     }
 
-    // localhost:8888/emp/updateByName?selectName=WAIBIBABO&newName=BILIBILI
+    // localhost:8888/emp/updateByName?selectName=BILIBILI&newName=WAIBIBABO
     @GetMapping("/updateByName")
     public String updateByName(String selectName, String newName) {
         empManagement.updateByName(selectName, newName);

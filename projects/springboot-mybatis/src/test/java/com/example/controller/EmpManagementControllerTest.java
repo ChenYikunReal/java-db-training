@@ -41,13 +41,13 @@ public class EmpManagementControllerTest {
 
     @Test
     public void testUpdateByName() throws Exception{
-        String result = restTemplate.getForObject("/emp/updateByName?selectName=WAIBIBABO&newName=BILIBILI", String.class);
+        String result = restTemplate.getForObject("/emp/updateByName?selectName=BILIBILI&newName=WAIBIBABO", String.class);
         System.out.println(result);
     }
 
     @Test
     public void testDeleteByName() throws Exception{
-        String result = restTemplate.getForObject("/emp/deleteByName?deleteByName?name=WAIBIBABO", String.class);
+        String result = restTemplate.getForObject("/emp/deleteByName?name=WAIBIBABO", String.class);
         System.out.println(result);
     }
 

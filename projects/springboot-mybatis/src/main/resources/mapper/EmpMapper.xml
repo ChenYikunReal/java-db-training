@@ -21,7 +21,7 @@
     </insert>
 
     <update id="updateByName" parameterType="java.util.Map">
-        UPDATE emp SET ename=#{selectName} WHERE ename=#{newName}
+        UPDATE emp SET ename=#{newName} WHERE ename=#{selectName}
     </update>
 
     <delete id="deleteById" parameterType="Integer">
