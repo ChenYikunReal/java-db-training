@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.RoleMapper">
+
+    <resultMap id="role" type="com.example.pojo.Role"/>
+
+    <parameterMap id="role" type="com.example.pojo.Role"/>
+
+    <resultMap type="com.example.pojo.Role" id="roleMap">
+        <id column="id" property="id" />
+        <result column="name" property="name"/>
+        <collection property="myusers" column="id" select="com.example.mapper.MyUserMapper.selectByRoleId"/>
+    </resultMap>
+
+    <select id="selectById" parameterType="int" resultMap="roleMap">
+        select * from `role` where id = #{id}
+    </select>
+
+    <select id="selectByIdReal" parameterType="int" resultType="com.example.pojo.Role">
+        select * from `role` where id = #{id}
+    </select>
+
+</mapper>
