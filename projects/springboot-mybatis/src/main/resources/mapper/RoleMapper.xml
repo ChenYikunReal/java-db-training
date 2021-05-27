@@ -6,17 +6,21 @@
 
     <parameterMap id="role" type="com.example.pojo.Role"/>
 
-    <resultMap type="com.example.pojo.Role" id="roleMap">
+    <resultMap id="roleMap" type="com.example.pojo.Role">
         <id column="id" property="id" />
         <result column="name" property="name"/>
         <collection property="myusers" column="id" select="com.example.mapper.MyUserMapper.selectByRoleId"/>
     </resultMap>
 
+<!--    <resultMap id="roleMapJoin" type="com.example.pojo.Role">-->
+
+<!--    </resultMap>-->
+
     <select id="selectById" parameterType="int" resultMap="roleMap">
         select * from `role` where id = #{id}
     </select>
 
-    <select id="selectByIdReal" parameterType="int" resultType="com.example.pojo.Role">
+    <select id="selectByIdReal" parameterType="int" resultMap="role">
         select * from `role` where id = #{id}
     </select>
 

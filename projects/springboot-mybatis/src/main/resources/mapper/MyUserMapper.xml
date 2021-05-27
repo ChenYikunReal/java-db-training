@@ -6,19 +6,24 @@
 
     <parameterMap id="myuser" type="com.example.pojo.MyUser"/>
 
-    <resultMap type="com.example.pojo.MyUser" id="myuserMap">
+    <resultMap id="myuserMap" type="com.example.pojo.MyUser">
         <association property="role" column="role_id" select="com.example.mapper.RoleMapper.selectByIdReal"/>
     </resultMap>
 
-    <resultMap type="com.example.pojo.MyUser" id="myuserRealMap">
-    </resultMap>
+<!--    <resultMap id="myuserMapJoin" type="com.example.pojo.MyUser">-->
+<!--        <association property="role" column="role_id" select="com.example.mapper.RoleMapper.selectByIdReal"/>-->
+<!--    </resultMap>-->
 
     <select id="selectById" parameterType="int" resultMap="myuserMap">
         select * from `myuser` where id = #{id}
     </select>
 
-    <select id="selectByRoleId" parameterType="int" resultMap="myuserRealMap">
+    <select id="selectByRoleId" parameterType="int" resultMap="myuser">
         select * from `myuser` where role_id = #{role_id}
     </select>
+
+<!--    <select id="selectByIdLeftJoin" parameterType="int" resultMap="">-->
+<!--        //-->
+<!--    </select>-->
 
 </mapper>

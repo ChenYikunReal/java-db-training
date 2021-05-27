@@ -2,6 +2,7 @@ package com.example.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -66,11 +67,13 @@ public class DruidConfig {
     @Value("{spring.datasource.connectionProperties}")
     private String connectionProperties;
 
-    @Bean
+    @ConfigurationProperties(prefix = "spring.datasource")
+    // 虽然IDEA爆红，但是MyBatis不这么写就显示不出来数据源页面
+    @Bean(destroyMethod = "close",initMethod = "init")
     @Primary
     public DataSource dataSource(){
         DruidDataSource datasource = new DruidDataSource();
-        datasource.setUrl(this.dbUrl);
+        datasource.setUrl(dbUrl);
         datasource.setUsername(username);
         datasource.setPassword(password);
         datasource.setDriverClassName(driverClassName);
@@ -95,5 +98,5 @@ public class DruidConfig {
         datasource.setConnectionProperties(connectionProperties);
         return datasource;
     }
-}
 
+}
