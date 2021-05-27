@@ -69,7 +69,7 @@ public class DruidConfig {
 
     @ConfigurationProperties(prefix = "spring.datasource")
     // 虽然IDEA爆红，但是MyBatis不这么写就显示不出来数据源页面
-    @Bean(destroyMethod = "close",initMethod = "init")
+    @Bean(destroyMethod = "close", initMethod = "init")
     @Primary
     public DataSource dataSource(){
         DruidDataSource datasource = new DruidDataSource();
